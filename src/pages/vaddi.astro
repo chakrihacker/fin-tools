@@ -1,7 +1,7 @@
 ---
 import "@/styles/globals.css";
 import Layout from "@/layouts/Layout.astro";
-import HomeTools from "@/containers/home-tools";
+import VaddiCalculator from "@/containers/vaddi-calculator";
 ---
 
 <!-- Dark Mode -->
@@ -29,10 +29,10 @@ import HomeTools from "@/containers/home-tools";
 	}
 </script>
 <Layout
-	title="Fin Tools — Financial Calculators"
-	description="Simple, powerful tools for your everyday financial calculations"
+	title="Interest Calculator — Fin Tools"
+	description="Calculate simple and compound interest with ease"
 >
-	<div class="max-w-4xl mx-auto px-4 py-8">
-		<HomeTools client:load />
+	<div class="max-w-2xl mx-auto px-4 py-8">
+		<VaddiCalculator client:load />
 	</div>
 </Layout>

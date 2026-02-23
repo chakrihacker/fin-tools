@@ -1,24 +1,55 @@
 ---
 import { ModeToggle } from "../ModeToggle";
+import { LanguageSelector } from "../LanguageSelector";
+
+const currentPath = Astro.url.pathname;
 ---
 
 <header
   transition:persist
-  class="w-full backdrop-blur-md flex flex-row justify-items-center items-center gap-2 px-2 py-4 sm:justify-between sm:mx-auto lg:sticky lg:top-0 lg:px-0"
+  class="w-full backdrop-blur-md border-b border-neutral-200/50 dark:border-neutral-800/50 flex flex-row items-center px-4 py-3 lg:sticky lg:top-0 lg:z-50"
 >
   <div
-    class="max-w-4xl w-full mx-auto flex flex-row justify-center items-center gap-2 sm:justify-between"
+    class="max-w-4xl w-full mx-auto flex flex-row items-center justify-between gap-4"
   >
-    <section class="hidden sm:block">
+    <!-- Brand -->
+    <a
+      href="/"
+      class="text-xl font-bold text-neutral-800 dark:text-neutral-200 hover:opacity-80 transition-opacity shrink-0"
+    >
+      Fin Tools
+    </a>
+
+    <!-- Navigation -->
+    <nav class="hidden sm:flex items-center gap-1">
       <a
         href="/"
-        class="text-2xl font-bold text-neutral-800 dark:text-neutral-200"
+        class:list={[
+          "px-3 py-1.5 rounded-md text-sm font-medium transition-colors",
+          currentPath === "/"
+            ? "bg-neutral-900/10 dark:bg-neutral-100/10 text-neutral-900 dark:text-neutral-100"
+            : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-900/5 dark:hover:bg-neutral-100/5",
+        ]}
       >
-        Vaddi Calculator
+        Home
       </a>
-    </section>
-    <section>
+      <a
+        href="/vaddi"
+        class:list={[
+          "px-3 py-1.5 rounded-md text-sm font-medium transition-colors",
+          currentPath === "/vaddi"
+            ? "bg-neutral-900/10 dark:bg-neutral-100/10 text-neutral-900 dark:text-neutral-100"
+            : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-900/5 dark:hover:bg-neutral-100/5",
+        ]}
+      >
+        Interest Calculator
+      </a>
+    </nav>
+
+    <!-- Controls -->
+    <div class="flex items-center gap-2">
+      <LanguageSelector client:load />
       <ModeToggle client:load />
-    </section>
+    </div>
   </div>
 </header>

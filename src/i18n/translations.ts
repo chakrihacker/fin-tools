@@ -23,6 +23,12 @@ export const translations = {
 					"Calculate simple and compound interest. Supports date-based or period-based duration.",
 				badge: "Vaddi",
 			},
+			stockAverageCalculator: {
+				title: "Stock Average Calculator",
+				description:
+					"Calculate how many shares to buy to reach your target average price",
+				badge: "Investing",
+			},
 		},
 		common: {
 			currencySymbol: "₹",

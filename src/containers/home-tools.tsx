@@ -1,4 +1,4 @@
-import { Calculator } from "lucide-react";
+import { Calculator, TrendingDown } from "lucide-react";
 import { useTranslations } from "@/i18n";
 import {
 	Card,
@@ -24,6 +24,14 @@ const tools: Tool[] = [
 		badgeKey: "tools.interestCalculator.badge",
 		href: "/vaddi",
 		icon: <Calculator className="h-6 w-6" />,
+		available: true,
+	},
+	{
+		titleKey: "tools.stockAverageCalculator.title",
+		descriptionKey: "tools.stockAverageCalculator.description",
+		badgeKey: "tools.stockAverageCalculator.badge",
+		href: "/stock-average",
+		icon: <TrendingDown className="h-6 w-6" />,
 		available: true,
 	},
 ];

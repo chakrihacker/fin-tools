@@ -1,0 +1,38 @@
+---
+import "@/styles/globals.css";
+import Layout from "@/layouts/Layout.astro";
+import StockAverageCalculator from "@/containers/stock-average-calculator";
+---
+
+<!-- Dark Mode -->
+<script is:inline>
+	const getThemePreference = () => {
+		if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+			return localStorage.getItem("theme");
+		}
+		return window.matchMedia("(prefers-color-scheme: dark)").matches
+			? "dark"
+			: "light";
+	};
+	const isDark = getThemePreference() === "dark";
+	document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+	if (typeof localStorage !== "undefined") {
+		const observer = new MutationObserver(() => {
+			const isDark = document.documentElement.classList.contains("dark");
+			localStorage.setItem("theme", isDark ? "dark" : "light");
+		});
+		observer.observe(document.documentElement, {
+			attributes: true,
+			attributeFilter: ["class"],
+		});
+	}
+</script>
+<Layout
+	title="Stock Average Calculator — Fin Tools"
+	description="Calculate how many shares to buy to reach your target average price"
+>
+	<div class="max-w-2xl mx-auto px-4 py-8">
+		<StockAverageCalculator client:load />
+	</div>
+</Layout>

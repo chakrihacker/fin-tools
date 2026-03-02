@@ -44,6 +44,17 @@ const currentPath = Astro.url.pathname;
       >
         Interest Calculator
       </a>
+      <a
+        href="/stock-average"
+        class:list={[
+          "px-3 py-1.5 rounded-md text-sm font-medium transition-colors",
+          currentPath === "/stock-average"
+            ? "bg-neutral-900/10 dark:bg-neutral-100/10 text-neutral-900 dark:text-neutral-100"
+            : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-900/5 dark:hover:bg-neutral-100/5",
+        ]}
+      >
+        Stock Average
+      </a>
     </nav>
 
     <!-- Controls -->

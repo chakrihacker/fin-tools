@@ -196,17 +196,17 @@ return parts.join(" ") || "—";
 return (
 <div className="space-y-6">
 <div className="space-y-1">
-<h1 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+<h1 className="text-2xl font-bold tracking-tight">
 {t("vaddi.pageTitle")}
 </h1>
-<p className="text-sm text-neutral-600 dark:text-neutral-400">
+<p className="text-sm text-muted-foreground">
 {t("vaddi.pageDescription")}
 </p>
 </div>
 
 <Form {...vaddiForm}>
 <form onSubmit={vaddiForm.handleSubmit(onSubmit)}>
-<Card className="border-neutral-200 dark:border-neutral-800">
+<Card>
 <CardContent className="pt-6 space-y-5">
 {/* Interest Type and Rate Type */}
 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -222,7 +222,7 @@ render={({ field }) => (
 <RadioGroup
 defaultValue={field.value}
 onValueChange={field.onChange}
-className="flex gap-4"
+className="flex flex-wrap gap-x-4 gap-y-2"
 >
 <FormItem className="flex items-center space-x-2 space-y-0">
 <FormControl>
@@ -257,7 +257,7 @@ render={({ field }) => (
 <RadioGroup
 defaultValue={field.value}
 onValueChange={field.onChange}
-className="flex gap-4"
+className="flex flex-wrap gap-x-4 gap-y-2"
 >
 <FormItem className="flex items-center space-x-2 space-y-0">
 <FormControl>
@@ -340,7 +340,7 @@ render={({ field }) => (
 <RadioGroup
 defaultValue={field.value}
 onValueChange={field.onChange}
-className="flex gap-4"
+className="flex flex-wrap gap-x-4 gap-y-2"
 >
 <FormItem className="flex items-center space-x-2 space-y-0">
 <FormControl>
@@ -583,7 +583,7 @@ placeholder="0"
 )}
 </div>
 </CardContent>
-<CardFooter className="flex justify-between pt-2 pb-6 px-6">
+<CardFooter className="flex flex-col-reverse gap-3 px-6 pb-6 pt-2 sm:flex-row sm:justify-between">
 <Button
 type="button"
 variant="outline"
@@ -604,7 +604,7 @@ setDuration({ years: 0, months: 0, days: 0 });
 {/* Result */}
 <div ref={resultRef}>
 {vaddiForm.formState.isSubmitSuccessful && interest > 0 && (
-<Card className="border-neutral-200 dark:border-neutral-800">
+<Card>
 <CardHeader className="pb-2">
 <CardTitle className="text-lg font-semibold">
 {isInterestTypeCompound
@@ -614,27 +614,27 @@ setDuration({ years: 0, months: 0, days: 0 });
 </CardHeader>
 <CardContent>
 <dl className="space-y-3">
-<div className="flex justify-between items-center py-2 border-b border-neutral-100 dark:border-neutral-800">
-<dt className="text-sm text-neutral-600 dark:text-neutral-400">
+<div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-border py-2">
+<dt className="text-sm text-muted-foreground">
 {t("vaddi.result.principal")}
 </dt>
-<dd className="text-sm font-medium tabular-nums">
+<dd className="ml-auto text-right text-sm font-medium tabular-nums">
 {currency}{Number(vaddiForm.getValues("amount")).toLocaleString()}
 </dd>
 </div>
-<div className="flex justify-between items-center py-2 border-b border-neutral-100 dark:border-neutral-800">
-<dt className="text-sm text-neutral-600 dark:text-neutral-400">
+<div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-border py-2">
+<dt className="text-sm text-muted-foreground">
 {t("vaddi.result.duration")}
 </dt>
-<dd className="text-sm font-medium">{formatDuration()}</dd>
+<dd className="ml-auto text-right text-sm font-medium">{formatDuration()}</dd>
 </div>
-<div className="flex justify-between items-center py-2 border-b border-neutral-100 dark:border-neutral-800">
-<dt className="text-sm text-neutral-600 dark:text-neutral-400">
+<div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-border py-2">
+<dt className="text-sm text-muted-foreground">
 {t("vaddi.result.interestRate")}
 </dt>
-<dd className="text-sm font-medium">
+<dd className="ml-auto text-right text-sm font-medium">
 {vaddiForm.getValues("interestRate")}{" "}
-<span className="text-neutral-500 font-normal">
+<span className="font-normal text-muted-foreground">
 (
 {vaddiForm.getValues("interestRateType") === "rupee"
 ? t("vaddi.result.rupeePerMonthLabel")
@@ -643,19 +643,19 @@ setDuration({ years: 0, months: 0, days: 0 });
 </span>
 </dd>
 </div>
-<div className="flex justify-between items-center py-2 border-b border-neutral-100 dark:border-neutral-800">
-<dt className="text-sm text-neutral-600 dark:text-neutral-400">
+<div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-border py-2">
+<dt className="text-sm text-muted-foreground">
 {t("vaddi.result.interest")}
 </dt>
-<dd className="text-sm font-medium tabular-nums text-amber-600 dark:text-amber-400">
+<dd className="ml-auto text-right text-sm font-medium tabular-nums">
 {currency}{interest.toFixed(2)}
 </dd>
 </div>
-<div className="flex justify-between items-center py-2">
+<div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-2">
 <dt className="text-sm font-semibold">
 {t("vaddi.result.totalAmount")}
 </dt>
-<dd className="text-base font-bold tabular-nums text-green-600 dark:text-green-400">
+<dd className="ml-auto text-right text-base font-bold tabular-nums text-primary">
 {currency}
 {(
 Number(vaddiForm.getValues("amount")) + interest

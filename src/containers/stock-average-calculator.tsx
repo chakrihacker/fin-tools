@@ -174,27 +174,27 @@ export default function StockAverageCalculator() {
 		<div className="space-y-6">
 			{/* Heading */}
 			<div className="space-y-1">
-				<h1 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+				<h1 className="text-2xl font-bold tracking-tight">
 					Stock Average Calculator
 				</h1>
-				<p className="text-sm text-neutral-600 dark:text-neutral-400">
+				<p className="text-sm text-muted-foreground">
 					Calculate how many shares to buy to reach your target average price
 				</p>
 			</div>
 
 			{/* Calculator Card */}
-			<Card className="border-neutral-200 dark:border-neutral-800">
+			<Card>
 				<CardHeader className="pb-2">
 					<div className="flex flex-wrap items-center justify-between gap-3">
 						{/* Mode Toggle */}
-						<div className="flex rounded-md border border-neutral-200 dark:border-neutral-800 overflow-hidden">
+						<div className="flex w-full overflow-hidden rounded-md border border-input sm:w-auto">
 							<button
 								type="button"
 								onClick={() => handleModeChange("price")}
-								className={`px-4 py-2 text-sm font-medium transition-colors ${
+								className={`flex-1 px-3 py-2 text-sm font-medium transition-colors sm:flex-none sm:px-4 ${
 									mode === "price"
-										? "bg-neutral-900 text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900"
-										: "bg-white text-neutral-600 hover:bg-neutral-50 dark:bg-neutral-950 dark:text-neutral-400 dark:hover:bg-neutral-900"
+										? "bg-primary text-primary-foreground"
+										: "bg-background text-muted-foreground hover:bg-accent hover:text-accent-foreground"
 								}`}
 							>
 								Enter Target Price
@@ -202,10 +202,10 @@ export default function StockAverageCalculator() {
 							<button
 								type="button"
 								onClick={() => handleModeChange("percent")}
-								className={`px-4 py-2 text-sm font-medium transition-colors ${
+								className={`flex-1 px-3 py-2 text-sm font-medium transition-colors sm:flex-none sm:px-4 ${
 									mode === "percent"
-										? "bg-neutral-900 text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900"
-										: "bg-white text-neutral-600 hover:bg-neutral-50 dark:bg-neutral-950 dark:text-neutral-400 dark:hover:bg-neutral-900"
+										? "bg-primary text-primary-foreground"
+										: "bg-background text-muted-foreground hover:bg-accent hover:text-accent-foreground"
 								}`}
 							>
 								Enter % Change
@@ -213,14 +213,14 @@ export default function StockAverageCalculator() {
 						</div>
 
 						{/* Currency Selector */}
-						<div className="w-32">
+						<div className="w-full sm:w-32">
 							<Select
 								value={currency}
 								onValueChange={(v) =>
 									handleCurrencyChange(v as CurrencyValue)
 								}
 							>
-								<SelectTrigger className="bg-white dark:bg-neutral-950">
+								<SelectTrigger>
 									<SelectValue />
 								</SelectTrigger>
 								<SelectContent>
@@ -254,7 +254,6 @@ export default function StockAverageCalculator() {
 								value={sharesOwned}
 								onChange={(e) => setSharesOwned(e.target.value)}
 								onKeyDown={(e) => e.key === "Enter" && handleCalculate()}
-								className="bg-white dark:bg-neutral-950"
 							/>
 						</div>
 
@@ -275,7 +274,6 @@ export default function StockAverageCalculator() {
 								value={currentAvg}
 								onChange={(e) => setCurrentAvg(e.target.value)}
 								onKeyDown={(e) => e.key === "Enter" && handleCalculate()}
-								className="bg-white dark:bg-neutral-950"
 							/>
 						</div>
 
@@ -296,7 +294,6 @@ export default function StockAverageCalculator() {
 								value={marketPrice}
 								onChange={(e) => setMarketPrice(e.target.value)}
 								onKeyDown={(e) => e.key === "Enter" && handleCalculate()}
-								className="bg-white dark:bg-neutral-950"
 							/>
 						</div>
 
@@ -320,7 +317,6 @@ export default function StockAverageCalculator() {
 									onKeyDown={(e) =>
 										e.key === "Enter" && handleCalculate()
 									}
-									className="bg-white dark:bg-neutral-950"
 								/>
 							</div>
 						) : (
@@ -341,14 +337,13 @@ export default function StockAverageCalculator() {
 									onKeyDown={(e) =>
 										e.key === "Enter" && handleCalculate()
 									}
-									className="bg-white dark:bg-neutral-950"
 								/>
 							</div>
 						)}
 					</div>
 				</CardContent>
 
-				<CardFooter className="flex justify-between pt-2 pb-6 px-6">
+				<CardFooter className="flex flex-col-reverse gap-3 px-6 pb-6 pt-2 sm:flex-row sm:justify-between">
 					<Button type="button" variant="outline" onClick={handleClear}>
 						Clear
 					</Button>
@@ -362,7 +357,7 @@ export default function StockAverageCalculator() {
 			{error && (
 				<div
 					role="alert"
-					className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-800/50 dark:bg-red-950/30 dark:text-red-300"
+					className="flex items-start gap-3 rounded-lg border border-destructive/50 bg-destructive/10 px-4 py-3 text-sm text-destructive"
 				>
 					<span className="mt-0.5 shrink-0">⚠️</span>
 					<span>{error}</span>
@@ -373,7 +368,7 @@ export default function StockAverageCalculator() {
 			{warning && (
 				<div
 					role="alert"
-					className="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-800/50 dark:bg-amber-950/30 dark:text-amber-300"
+					className="flex items-start gap-3 rounded-lg border bg-muted px-4 py-3 text-sm text-muted-foreground"
 				>
 					<span className="mt-0.5 shrink-0">ℹ️</span>
 					<span>{warning}</span>
@@ -383,7 +378,7 @@ export default function StockAverageCalculator() {
 			{/* Results */}
 			<div ref={resultRef}>
 				{result && (
-					<Card className="border-neutral-200 dark:border-neutral-800">
+					<Card>
 						<CardHeader className="pb-2">
 							<div className="flex items-center justify-between flex-wrap gap-2">
 								<CardTitle className="text-lg font-semibold">
@@ -392,8 +387,8 @@ export default function StockAverageCalculator() {
 								<span
 									className={`text-sm font-medium px-3 py-1 rounded-full ${
 										result.direction === "down"
-											? "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300"
-											: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+											? "bg-secondary text-secondary-foreground"
+											: "bg-accent text-accent-foreground"
 									}`}
 								>
 									{result.direction === "down"
@@ -404,51 +399,51 @@ export default function StockAverageCalculator() {
 						</CardHeader>
 						<CardContent>
 							<dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
-								<div className="flex justify-between items-center py-2 border-b border-neutral-100 dark:border-neutral-800">
-									<dt className="text-sm text-neutral-600 dark:text-neutral-400">
+								<div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-border py-2">
+									<dt className="text-sm text-muted-foreground">
 										Additional Shares to Buy
 									</dt>
-									<dd className="text-sm font-medium tabular-nums">
+									<dd className="ml-auto text-right text-sm font-medium tabular-nums">
 										{fmtInt(result.additionalShares)}
 									</dd>
 								</div>
-								<div className="flex justify-between items-center py-2 border-b border-neutral-100 dark:border-neutral-800">
-									<dt className="text-sm text-neutral-600 dark:text-neutral-400">
+								<div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-border py-2">
+									<dt className="text-sm text-muted-foreground">
 										Additional Investment
 									</dt>
-									<dd className="text-sm font-medium tabular-nums text-amber-600 dark:text-amber-400">
+									<dd className="ml-auto text-right text-sm font-medium tabular-nums">
 										{fmt(result.additionalInvestment)}
 									</dd>
 								</div>
-								<div className="flex justify-between items-center py-2 border-b border-neutral-100 dark:border-neutral-800">
-									<dt className="text-sm text-neutral-600 dark:text-neutral-400">
+								<div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-border py-2">
+									<dt className="text-sm text-muted-foreground">
 										New Total Shares
 									</dt>
-									<dd className="text-sm font-medium tabular-nums">
+									<dd className="ml-auto text-right text-sm font-medium tabular-nums">
 										{fmtInt(result.newTotalShares)}
 									</dd>
 								</div>
-								<div className="flex justify-between items-center py-2 border-b border-neutral-100 dark:border-neutral-800">
-									<dt className="text-sm text-neutral-600 dark:text-neutral-400">
+								<div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-border py-2">
+									<dt className="text-sm text-muted-foreground">
 										New Total Cost
 									</dt>
-									<dd className="text-sm font-medium tabular-nums">
+									<dd className="ml-auto text-right text-sm font-medium tabular-nums">
 										{fmt(result.newTotalCost)}
 									</dd>
 								</div>
-								<div className="flex justify-between items-center py-2 border-b border-neutral-100 dark:border-neutral-800">
+								<div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-border py-2">
 									<dt className="text-sm font-semibold">
 										Final Average Price
 									</dt>
-									<dd className="text-base font-bold tabular-nums text-green-600 dark:text-green-400">
+									<dd className="ml-auto text-right text-base font-bold tabular-nums text-primary">
 										{fmt(result.finalAvg)}
 									</dd>
 								</div>
-								<div className="flex justify-between items-center py-2 border-b border-neutral-100 dark:border-neutral-800">
-									<dt className="text-sm text-neutral-600 dark:text-neutral-400">
+								<div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-border py-2">
+									<dt className="text-sm text-muted-foreground">
 										Target Average
 									</dt>
-									<dd className="text-sm font-medium tabular-nums">
+									<dd className="ml-auto text-right text-sm font-medium tabular-nums">
 										{resolvedTargetDisplay !== null
 											? fmt(resolvedTargetDisplay)
 											: "—"}
@@ -472,13 +467,13 @@ export default function StockAverageCalculator() {
 			</div>
 
 			{/* Formula Explainer */}
-			<Card className="border-neutral-200 dark:border-neutral-800">
+			<Card>
 				<CardContent className="pt-6">
 					<details>
-						<summary className="cursor-pointer text-sm font-semibold text-neutral-700 dark:text-neutral-300 select-none">
+						<summary className="cursor-pointer select-none text-sm font-semibold">
 							Formula Explainer
 						</summary>
-						<pre className="mt-3 overflow-x-auto rounded-md bg-neutral-100 dark:bg-neutral-900 p-4 text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed font-mono">
+						<pre className="mt-3 overflow-x-auto rounded-md bg-muted p-4 text-xs leading-relaxed text-muted-foreground font-mono">
 							{`Additional shares  = (current_shares × (current_avg − target_avg)) / (target_avg − market_price)
 Additional invest  = additional_shares × market_price
 New total shares   = current_shares + additional_shares
@@ -490,7 +485,7 @@ Final avg          = new_total_cost / new_total_shares`}
 			</Card>
 
 			{/* Disclaimer */}
-			<p className="text-xs text-center text-neutral-500 dark:text-neutral-500 pb-4">
+			<p className="pb-4 text-center text-xs text-muted-foreground">
 				For educational purposes only — not financial advice.
 			</p>
 		</div>

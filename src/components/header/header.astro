@@ -1,13 +1,14 @@
 ---
 import { ModeToggle } from "../ModeToggle";
 import { LanguageSelector } from "../LanguageSelector";
+import { MobileNavigation } from "../MobileNavigation";
 
 const currentPath = Astro.url.pathname;
 ---
 
 <header
   transition:persist
-  class="w-full backdrop-blur-md border-b border-neutral-200/50 dark:border-neutral-800/50 flex flex-row items-center px-4 py-3 lg:sticky lg:top-0 lg:z-50"
+  class="w-full border-b border-border bg-background/80 backdrop-blur-md flex flex-row items-center px-4 py-3 lg:sticky lg:top-0 lg:z-50"
 >
   <div
     class="max-w-4xl w-full mx-auto flex flex-row items-center justify-between gap-4"
@@ -15,7 +16,7 @@ const currentPath = Astro.url.pathname;
     <!-- Brand -->
     <a
       href="/"
-      class="text-xl font-bold text-neutral-800 dark:text-neutral-200 hover:opacity-80 transition-opacity shrink-0"
+      class="text-xl font-bold text-foreground hover:opacity-80 transition-opacity shrink-0"
     >
       Fin Tools
     </a>
@@ -27,8 +28,8 @@ const currentPath = Astro.url.pathname;
         class:list={[
           "px-3 py-1.5 rounded-md text-sm font-medium transition-colors",
           currentPath === "/"
-            ? "bg-neutral-900/10 dark:bg-neutral-100/10 text-neutral-900 dark:text-neutral-100"
-            : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-900/5 dark:hover:bg-neutral-100/5",
+            ? "bg-accent text-accent-foreground"
+            : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
         ]}
       >
         Home
@@ -38,8 +39,8 @@ const currentPath = Astro.url.pathname;
         class:list={[
           "px-3 py-1.5 rounded-md text-sm font-medium transition-colors",
           currentPath === "/vaddi"
-            ? "bg-neutral-900/10 dark:bg-neutral-100/10 text-neutral-900 dark:text-neutral-100"
-            : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-900/5 dark:hover:bg-neutral-100/5",
+            ? "bg-accent text-accent-foreground"
+            : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
         ]}
       >
         Interest Calculator
@@ -49,8 +50,8 @@ const currentPath = Astro.url.pathname;
         class:list={[
           "px-3 py-1.5 rounded-md text-sm font-medium transition-colors",
           currentPath === "/stock-average"
-            ? "bg-neutral-900/10 dark:bg-neutral-100/10 text-neutral-900 dark:text-neutral-100"
-            : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-900/5 dark:hover:bg-neutral-100/5",
+            ? "bg-accent text-accent-foreground"
+            : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
         ]}
       >
         Stock Average
@@ -59,6 +60,9 @@ const currentPath = Astro.url.pathname;
 
     <!-- Controls -->
     <div class="flex items-center gap-2">
+      <div class="sm:hidden">
+        <MobileNavigation client:load currentPath={currentPath} />
+      </div>
       <LanguageSelector client:load />
       <ModeToggle client:load />
     </div>

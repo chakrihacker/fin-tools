@@ -42,10 +42,10 @@ export default function HomeTools() {
 	return (
 		<div className="space-y-8">
 			<div className="space-y-2">
-				<h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+				<h1 className="text-3xl font-bold tracking-tight">
 					{t("tools.title")}
 				</h1>
-				<p className="text-neutral-600 dark:text-neutral-400">
+				<p className="text-muted-foreground">
 					{t("tools.subtitle")}
 				</p>
 			</div>
@@ -54,17 +54,17 @@ export default function HomeTools() {
 				{tools.map((tool) =>
 					tool.available ? (
 						<a key={tool.href} href={tool.href} className="group block">
-							<Card className="h-full transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 cursor-pointer border-neutral-200 dark:border-neutral-800">
+							<Card className="h-full cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
 								<CardHeader className="pb-2">
 									<div className="flex items-start justify-between">
-										<div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 group-hover:bg-indigo-100 dark:group-hover:bg-indigo-900/30 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+										<div className="rounded-lg bg-secondary p-2 text-secondary-foreground transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
 											{tool.icon}
 										</div>
-										<span className="text-xs font-medium px-2 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300">
+										<span className="rounded-full bg-secondary px-2 py-1 text-xs font-medium text-secondary-foreground">
 											{t(tool.badgeKey)}
 										</span>
 									</div>
-									<CardTitle className="text-base font-semibold mt-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+									<CardTitle className="mt-3 text-base font-semibold transition-colors group-hover:text-primary">
 										{t(tool.titleKey)}
 									</CardTitle>
 								</CardHeader>
@@ -78,18 +78,18 @@ export default function HomeTools() {
 					) : (
 						<Card
 							key={tool.href}
-							className="h-full opacity-60 cursor-not-allowed border-neutral-200 dark:border-neutral-800"
+							className="h-full cursor-not-allowed opacity-60"
 						>
 							<CardHeader className="pb-2">
 								<div className="flex items-start justify-between">
-									<div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-500">
+										<div className="rounded-lg bg-muted p-2 text-muted-foreground">
 										{tool.icon}
 									</div>
-									<span className="text-xs font-medium px-2 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-500">
+										<span className="rounded-full bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">
 										{t("tools.comingSoon")}
 									</span>
 								</div>
-								<CardTitle className="text-base font-semibold mt-3 text-neutral-500">
+									<CardTitle className="mt-3 text-base font-semibold text-muted-foreground">
 									{t(tool.titleKey)}
 								</CardTitle>
 							</CardHeader>

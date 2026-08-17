@@ -7,7 +7,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://vaddi-app.fyndx.io",
+	site: "https://fintools.fyndx.io",
 	integrations: [
 		react(),
 		tailwind({

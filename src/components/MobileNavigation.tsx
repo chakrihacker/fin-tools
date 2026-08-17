@@ -16,6 +16,7 @@ const links = [
 	{ href: "/", label: "Home" },
 	{ href: "/vaddi", label: "Interest Calculator" },
 	{ href: "/stock-average", label: "Stock Average" },
+	{ href: "/profit-booking", label: "Profit Booking" },
 ];
 
 export function MobileNavigation({ currentPath }: MobileNavigationProps) {

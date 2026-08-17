@@ -56,6 +56,17 @@ const currentPath = Astro.url.pathname;
       >
         Stock Average
       </a>
+      <a
+        href="/profit-booking"
+        class:list={[
+          "px-3 py-1.5 rounded-md text-sm font-medium transition-colors",
+          currentPath === "/profit-booking"
+            ? "bg-accent text-accent-foreground"
+            : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
+        ]}
+      >
+        Profit Booking
+      </a>
     </nav>
 
     <!-- Controls -->

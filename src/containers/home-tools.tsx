@@ -1,4 +1,4 @@
-import { Calculator, TrendingDown } from "lucide-react";
+import { Calculator, TrendingDown, TrendingUp } from "lucide-react";
 import { useTranslations } from "@/i18n";
 import {
 	Card,
@@ -32,6 +32,14 @@ const tools: Tool[] = [
 		badgeKey: "tools.stockAverageCalculator.badge",
 		href: "/stock-average",
 		icon: <TrendingDown className="h-6 w-6" />,
+		available: true,
+	},
+	{
+		titleKey: "tools.profitBookingCalculator.title",
+		descriptionKey: "tools.profitBookingCalculator.description",
+		badgeKey: "tools.profitBookingCalculator.badge",
+		href: "/profit-booking",
+		icon: <TrendingUp className="h-6 w-6" />,
 		available: true,
 	},
 ];

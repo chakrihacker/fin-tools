@@ -1,7 +1,7 @@
 ---
 import { ModeToggle } from "../ModeToggle";
 import { LanguageSelector } from "../LanguageSelector";
-import { MobileNavigation } from "../MobileNavigation";
+import { navigationItems } from "@/lib/navigation";
 
 const currentPath = Astro.url.pathname;
 ---
@@ -22,58 +22,27 @@ const currentPath = Astro.url.pathname;
     </a>
 
     <!-- Navigation -->
-    <nav class="hidden sm:flex items-center gap-1">
-      <a
-        href="/"
-        class:list={[
-          "px-3 py-1.5 rounded-md text-sm font-medium transition-colors",
-          currentPath === "/"
-            ? "bg-accent text-accent-foreground"
-            : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
-        ]}
-      >
-        Home
-      </a>
-      <a
-        href="/vaddi"
-        class:list={[
-          "px-3 py-1.5 rounded-md text-sm font-medium transition-colors",
-          currentPath === "/vaddi"
-            ? "bg-accent text-accent-foreground"
-            : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
-        ]}
-      >
-        Interest Calculator
-      </a>
-      <a
-        href="/stock-average"
-        class:list={[
-          "px-3 py-1.5 rounded-md text-sm font-medium transition-colors",
-          currentPath === "/stock-average"
-            ? "bg-accent text-accent-foreground"
-            : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
-        ]}
-      >
-        Stock Average
-      </a>
-      <a
-        href="/profit-booking"
-        class:list={[
-          "px-3 py-1.5 rounded-md text-sm font-medium transition-colors",
-          currentPath === "/profit-booking"
-            ? "bg-accent text-accent-foreground"
-            : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
-        ]}
-      >
-        Profit Booking
-      </a>
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Primary navigation">
+      {
+        navigationItems.map((item) => (
+          <a
+            href={item.href}
+            aria-current={currentPath === item.href ? "page" : undefined}
+            class:list={[
+              "px-3 py-1.5 rounded-md text-sm font-medium transition-colors",
+              currentPath === item.href
+                ? "bg-accent text-accent-foreground"
+                : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
     </nav>
 
     <!-- Controls -->
     <div class="flex items-center gap-2">
-      <div class="sm:hidden">
-        <MobileNavigation client:load currentPath={currentPath} />
-      </div>
       <LanguageSelector client:load />
       <ModeToggle client:load />
     </div>

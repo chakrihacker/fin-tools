@@ -12,7 +12,12 @@ export const translations = {
 		nav: {
 			home: "Home",
 			interestCalculator: "Interest Calculator",
+			interest: "Interest",
+			stockAverage: "Stock Average",
+			average: "Average",
 			profitBooking: "Profit Booking",
+			profit: "Profit",
+			mobileNavigation: "Primary navigation",
 		},
 		tools: {
 			title: "Financial Tools",
@@ -123,7 +128,12 @@ export const translations = {
 		nav: {
 			home: "హోమ్",
 			interestCalculator: "వడ్డీ కాలిక్యులేటర్",
+			interest: "వడ్డీ",
+			stockAverage: "స్టాక్ సగటు",
+			average: "సగటు",
 			profitBooking: "లాభ బుకింగ్",
+			profit: "లాభం",
+			mobileNavigation: "ప్రధాన నావిగేషన్",
 		},
 		tools: {
 			title: "ఆర్థిక సాధనాలు",

@@ -1,5 +1,6 @@
 ---
 import Header from "@/components/header/header.astro";
+import { MobileNavigation } from "@/components/MobileNavigation";
 
 interface Props {
 	title?: string;
@@ -10,6 +11,7 @@ const {
 	title = "Fin Tools",
 	description = "Simple, powerful tools for your everyday financial calculations",
 } = Astro.props;
+const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -26,10 +28,11 @@ const {
 		class="flex min-h-screen flex-col bg-background text-foreground selection:bg-primary selection:text-primary-foreground"
 	>
 		<Header />
-		<main class="flex-1 px-4 py-6 lg:px-0">
+		<main class="flex-1 px-4 py-6 pb-28 lg:px-0 lg:pb-6">
 			<div class="w-full">
 				<slot />
 			</div>
 		</main>
+		<MobileNavigation client:load currentPath={currentPath} />
 	</body>
 </html>

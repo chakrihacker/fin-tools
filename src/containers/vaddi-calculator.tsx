@@ -296,6 +296,7 @@ render={({ field }) => (
 <Input
 {...field}
 type="number"
+inputMode="decimal"
 id="amount"
 placeholder="0"
 className="bg-background"
@@ -317,6 +318,7 @@ render={({ field }) => (
 <Input
 {...field}
 type="number"
+inputMode="decimal"
 id="rate"
 className="bg-background"
 placeholder="0"
@@ -431,6 +433,7 @@ className="text-sm font-medium"
 <Input
 {...field}
 type="number"
+inputMode="numeric"
 id="years"
 min="0"
 placeholder="0"
@@ -456,6 +459,7 @@ className="text-sm font-medium"
 <Input
 {...field}
 type="number"
+inputMode="numeric"
 id="months"
 min="0"
 placeholder="0"
@@ -481,6 +485,7 @@ className="text-sm font-medium"
 <Input
 {...field}
 type="number"
+inputMode="numeric"
 id="days"
 min="0"
 placeholder="0"
@@ -572,6 +577,7 @@ className="text-sm font-medium"
 <Input
 {...field}
 type="number"
+inputMode="numeric"
 id="customMonths"
 min="1"
 className="bg-background"

@@ -119,7 +119,7 @@ export default function StockAverageCalculator() {
 		setTimeout(() => {
 			resultRef.current?.scrollIntoView({
 				behavior: "smooth",
-				block: "nearest",
+				block: "start",
 			});
 		}, 100);
 	};
@@ -248,6 +248,7 @@ export default function StockAverageCalculator() {
 							<Input
 								id="sharesOwned"
 								type="number"
+							inputMode="numeric"
 								min="1"
 								step="1"
 								placeholder="100"
@@ -268,6 +269,7 @@ export default function StockAverageCalculator() {
 							<Input
 								id="currentAvg"
 								type="number"
+							inputMode="decimal"
 								min="0.01"
 								step="0.01"
 								placeholder="500.00"
@@ -288,6 +290,7 @@ export default function StockAverageCalculator() {
 							<Input
 								id="marketPrice"
 								type="number"
+							inputMode="decimal"
 								min="0.01"
 								step="0.01"
 								placeholder="400.00"
@@ -309,6 +312,7 @@ export default function StockAverageCalculator() {
 								<Input
 									id="targetPrice"
 									type="number"
+								inputMode="decimal"
 									min="0.01"
 									step="0.01"
 									placeholder="450.00"
@@ -330,6 +334,7 @@ export default function StockAverageCalculator() {
 								<Input
 									id="pctChange"
 									type="number"
+								inputMode="decimal"
 									step="0.1"
 									placeholder="-10"
 									value={pctChange}
